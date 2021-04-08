@@ -1,0 +1,11 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background: #eee;
+}
+
+h1 {
+  text-align: center;
+  font-family: Arial;
+  margin: 50px auto;
+}
