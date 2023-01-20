@@ -10,7 +10,7 @@ defined('_NOX') or die('401 Unauthorized');
 
 ?>
 
-<h1>Error 404 - Not Found</h1>
+<h1>Login Page</h1>
 
 <ul>
     <li><a href="/">Go home</a></li>

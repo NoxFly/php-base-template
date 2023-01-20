@@ -11,7 +11,7 @@ defined('_NOX') or die('401 Unauthorized');
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-basepath="<?php echo $this->getRootUrl(); ?>">
     <?php $this->requireComponent("head.php"); ?>
 
     <body>
