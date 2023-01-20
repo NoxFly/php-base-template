@@ -17,7 +17,9 @@ defined('_NOX') or die('401 Unauthorized');
     <body>
         <?php $this->requireComponent("nav.php"); ?>
 
-        <?php echo $this->getContent(); ?>
+        <main id="content">
+            <?php echo $this->getContent(); ?>
+        </main>
 
         <?php echo $this->includeJS('script'); ?>
 
