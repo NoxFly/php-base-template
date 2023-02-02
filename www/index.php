@@ -1,23 +1,21 @@
 <?php
 
 /**
- * @copyright Copyrights (C) 2021 - 2023 Dorian Thivolle All rights reserved.
- * @author Dorian Thivolle
+ * @copyright Copyrights (C) 2021 - 2023 NoxFly All rights reserved.
+ * @author NoxFly
  * @since 2021
  */
 
-define("_NOX", true);
-
-define("SEP", DIRECTORY_SEPARATOR);
 
 
-// PATHS DEFINES
-define("PATH_ROOT", realpath('.'));
-define("PATH_PUBLIC", PATH_ROOT . SEP . "public");
-define("PATH_ASSET", PATH_PUBLIC . SEP . "asset");
-define("PATH_VIEWS", PATH_PUBLIC . SEP . "views");
-define("PATH_CONF", "./_conf");
-define("PATH_INC", "./_inc");
+include_once('./_inc/definitions.php');
+
+// pretty useless since we're including the definition just above
+// but it's for security, if this include was removed in the future
+defined('_NOX') or die('401 Unauthorized');
+
+
+
 
 
 // website configuration

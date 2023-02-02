@@ -1,8 +1,8 @@
 <?php
 
 /**
- * @copyright Copyrights (C) 2021 - 2023 Dorian Thivolle All rights reserved.
- * @author Dorian Thivolle
+ * @copyright Copyrights (C) 2021 - 2023 NoxFly All rights reserved.
+ * @author NoxFly
  * @since 2021
  */
 
@@ -23,14 +23,7 @@ class Site {
     /** @var Router $router */
     protected $router;
 
-    /**
-     * @var string $basePath
-     * @var string $protocol
-     * @var string $$baseDir
-     * @var string $baseUrl
-     * @var string $rootUrl
-     */
-    protected $basePath, $protocol, $baseDir, $baseUrl, $rootUrl;
+    
 
     function __construct($config) {
         $this->router = new Router();
@@ -38,18 +31,12 @@ class Site {
         $this->title = $config['website_title'];
         $this->page = $config['home_page'];
 
-        $this->basePath 	= PATH_PUBLIC;
-		$this->protocol 	= (strpos($_SERVER['SERVER_PROTOCOL'], 'HTTPS') === 0)? 'https' : 'http';
-		$this->baseDir 	    = str_replace(rtrim(str_replace('/', SEP, $_SERVER['DOCUMENT_ROOT']), SEP), '', $this->basePath);
-		$this->rootUrl 	    = str_replace('\\', '/', str_replace(rtrim(str_replace('/', SEP, $_SERVER['DOCUMENT_ROOT']), SEP), '', PATH_ROOT));
-		$this->baseUrl		= str_replace('\\', '/', $this->baseDir) . '/';
-
         if(!empty($_SERVER['QUERY_STRING'])) {
             $this->page = preg_replace('#[^a-z0-9\/\-]#', '', $_SERVER['QUERY_STRING']);
             
 			// if url ends with / : redirects without it
 			if(substr($this->page, -1) == '/') {
-				header('location:' . $this->baseUrl . rtrim($this->page, '/'));
+				header('location:' . $this->router->getBaseUrl() . rtrim($this->page, '/'));
 			}
 		}
 
@@ -148,16 +135,9 @@ class Site {
     }
 
     /**
-     * @return string
+     * @return Router
      */
-    public function getBaseUrl() {
-        return $this->baseUrl;
-    }
-
-    /**
-     * @return string
-     */
-    public function getRootUrl() {
-        return $this->rootUrl;
+    public function getRouter() {
+        return $this->router;
     }
 }
