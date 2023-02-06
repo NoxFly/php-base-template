@@ -19,22 +19,23 @@ defined('_NOX') or die('401 Unauthorized');
 
 
 // website configuration
-$config = parse_ini_file(PATH_CONF . SEP . "config.ini");
+$config = parse_ini_file(PATH_CONF . SEP . "config.ini", true);
 
 // enable error output if in development mode
 if($config['ENV'] === 'dev') {
     ini_set('display_errors', 1);
     error_reporting(E_ALL);
 }
-
+else {
+    ini_set('display_errors', 0);
+    error_reporting(0);
+}
 
 
 
 
 
 // create website
-require(PATH_INC . SEP . "Site.php");
+require_once(PATH_INC . SEP . "Site.php");
 
 $site = new Site($config);
-
-$site->includeComponent($config['template_page']);

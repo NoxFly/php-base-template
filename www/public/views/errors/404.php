@@ -13,5 +13,5 @@ defined('_NOX') or die('401 Unauthorized');
 <h1>Error 404 - Not Found</h1>
 
 <ul>
-    <li><a href="<?=$this->getRouter()->getUrl('/')?>">Go home</a></li>
+    <li><a href="<?=$this->url('/')?>">Go home</a></li>
 </ul>
