@@ -6,9 +6,7 @@
  * @since 2021
  */
 
-
-
-include_once('./_inc/definitions.php');
+require_once('../engine/definitions.php');
 
 // pretty useless since we're including the definition just above
 // but it's for security, if this include was removed in the future
@@ -16,26 +14,10 @@ defined('_NOX') or die('401 Unauthorized');
 
 
 
+$config = parse_ini_file(PATH_CONF . SEP . 'config.ini', true);
 
 
-// website configuration
-$config = parse_ini_file(PATH_CONF . SEP . "config.ini", true);
-
-// enable error output if in development mode
-if($config['ENV'] === 'dev') {
-    ini_set('display_errors', 1);
-    error_reporting(E_ALL);
-}
-else {
-    ini_set('display_errors', 0);
-    error_reporting(0);
-}
+require_once(PATH_SRC . SEP . 'Site.php');
 
 
-
-
-
-// create website
-require_once(PATH_INC . SEP . "Site.php");
-
-$site = new Site($config);
+$site = new WebSite($config);

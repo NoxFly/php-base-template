@@ -10,9 +10,5 @@ defined('_NOX') or die('401 Unauthorized');
 
 ?>
 
-<h1>Welcome home !</h1>
-
-<ul>
-    <li><a href="<?=$this->url('/not-a-valid-page')?>">Visit 404</a></li>
-    <li><a href="<?=$this->url('/login')?>">Login</a></li>
-</ul>
+<h1><?=$this->getAppName()?></h1>
+<p class="center">Hello World !</p>

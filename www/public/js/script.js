@@ -3,3 +3,5 @@
  * @author NoxFly
  * @since 2021
  */
+
+console.log('hello console');

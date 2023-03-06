@@ -7,3 +7,9 @@
  */
 
 defined('_NOX') or die('401 Unauthorized');
+
+?>
+
+<nav id="main-nav">
+    <div class="app-logo"><a href="<?=$this->url('/')?>"></a></div>
+</nav>

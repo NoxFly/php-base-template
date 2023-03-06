@@ -4,14 +4,219 @@
  * @since 2021
  */
 
+
+@import 'mixins.scss';
+@import 'font-faces.scss';
+@import 'variables.scss';
+
 body {
     margin: 0;
-    // overflow: hidden;
-    background: #eee;
+    background: var(--background-color);
+    color: var(--color);
+    min-height: 100vh;
+    font-family: var(--font-family);
+    text-rendering: geometricPrecision;
 }
 
-h1 {
+a {
+    color: var(--primary);
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.center {
     text-align: center;
-    font-family: Arial;
-    margin: 50px auto;
+}
+
+#content {
+    min-height: 75vh;
+
+    > h1 {
+        text-align: center;
+        margin: 150px auto 100px auto;
+        color: var(--dark);
+        font-weight: 900;
+        font-size: 5em;
+        user-select: none;
+    }
+}
+
+#main-nav {
+    @include flex($justify-content: flex-start);
+
+    height: 60px;
+    background: var(--primary-light);
+
+    .app-logo {
+        margin: 0 50px 0 20px;
+        position: relative;
+
+        a {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+    }
+}
+
+#main-footer {
+    @include flex($direction: column, $justify-content: flext-start);
+
+    background: var(--primary-light);
+    padding: 50px 20px 25px 20px;
+    box-sizing: border-box;
+    color: var(--grey-blue-dark);
+    user-select: none;
+
+    #footer-copyrights {
+        font-size: .75em;
+        margin: 20px 0 0 0;
+    }
+}
+
+.app-logo {
+    min-width: 40px;
+    min-height: 40px;
+    background: center/contain url('../img/logo_app.png') no-repeat;
+}
+
+
+button {
+    --transition-duration: .2s;
+    
+    --color: #000;
+    --bg: #fff;
+    --stroke: #000;
+
+    --hbg: #fff;
+    --hclr: #000;
+    --hstrk: #000;
+
+
+    background: var(--bg);
+    border: 1px solid var(--stroke);
+    border-radius: 5px;
+    height: 36px;
+    padding: 0;
+    overflow: hidden;
+    transition-duration: var(--transition-duration);
+    color: var(--color);
+    outline-color: transparent;
+    cursor: pointer;
+
+    a {
+        @include flex;
+
+        text-decoration: none;
+        color: var(--color);
+        height: 100%;
+        padding: 0 15px;
+        transition-duration: var(--transition-duration);
+    }
+
+    &:hover {
+        a {
+            text-decoration: none;
+        }
+    }
+
+    &.round {
+        border-radius: 20px;
+    }
+
+    &.block {
+        width: 100%;
+    }
+
+    &:not(.stroke) {
+        &.primary {
+            --bg: 0 0/200% auto linear-gradient(90deg, var(--primary-lighter), var(--primary-darker)) repeat;
+            --stroke: var(--primary);
+            --color: var(--primary-contrast);
+            --start: var(--primary-lighter);
+            --end: var(--primary-darker);
+        }
+    
+        &.success {
+            --bg: var(--success);
+            --stroke: var(--success);
+            --color: var(--success-contrast);
+            --start: var(--success-lighter);
+            --end: var(--success-darker);
+        }
+    
+        &.warning {
+            --bg: var(--warning);
+            --stroke: var(--warning);
+            --color: var(--warning-contrast);
+            --start: var(--warning-lighter);
+            --end: var(--warning-darker);
+        }
+    
+        &.danger {
+            --bg: var(--danger);
+            --stroke: var(--danger);
+            --color: var(--danger-contrast);
+            --start: var(--danger-lighter);
+            --end: var(--danger-darker);
+        }
+
+        &:not(:disabled):hover {
+            background-position: 100% 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, .2);
+            filter: brightness(130%);
+        }
+    }
+
+    &.stroke {
+        --bg: transparent;
+        --color-contrast: #000;
+
+        &.primary {
+            --stroke: var(--primary);
+            --color: var(--primary);
+            --color-contrast: var(--primary-contrast);
+        }
+    
+        &.success {
+            --stroke: var(--success);
+            --color: var(--success);
+            --color-contrast: var(--success-contrast);
+        }
+    
+        &.warning {
+            --stroke: var(--warning);
+            --color: var(--warning);
+            --color-contrast: var(--warning-contrast);
+        }
+    
+        &.danger {
+            --stroke: var(--danger);
+            --color: var(--danger);
+            --color-contrast: var(--danger-contrast);
+        }
+
+        &:not(:disabled):hover {
+            --bg: var(--stroke);
+            --color: var(--color-contrast);
+        }
+    }
+
+    &:disabled {
+        filter: grayscale(1) brightness(140%);
+        cursor: default;
+    }
+}
+
+
+#error-btn {
+    button {
+        display: block;
+        margin: 50px auto 50px auto;
+    }
 }
