@@ -2,53 +2,18 @@ USE examgenerator;
 START TRANSACTION;
 SET time_zone='+00:00';
 
-DELETE FROM examquestion;
-DELETE FROM question;
-DELETE FROM examlevel;
-DELETE FROM exam;
-DELETE FROM coursechapter;
-DELETE FROM teacherteaching;
-DELETE FROM courselevelyear;
-DELETE FROM course;
-DELETE FROM teacher;
-DELETE FROM student;
-DELETE FROM level;
-DELETE FROM universitycourse;
 DELETE FROM user;
+DELETE FROM connection;
 DELETE FROM account;
-DELETE FROM universityyear;
-DELETE FROM university;
 
 
 
-INSERT INTO university (name, domain) VALUES
-	('Université de Haute-Alsace', 'uha.fr');
 
-INSERT INTO universityyear (id_univ, year) VALUES
-	(1, '2018'),
-	(1, '2019'),
-	(1, '2020'),
-	(1, '2021'),
-	(1, '2022');
+INSERT INTO account (mail, password) VALUES
+	('nox.fly@gmail.com', '$2y$10$.2e4/qJjfDRsxeKZ5Tc18uqzpHuV.crNf4MzAkaiFgAsZ6MBGJmjO'), -- password : test
 
-INSERT INTO account (id_univ, mail, password) VALUES
-	(1, 'admin@uha.fr', '$2y$10$.2e4/qJjfDRsxeKZ5Tc18uqzpHuV.crNf4MzAkaiFgAsZ6MBGJmjO'), -- password : test
-	(1, 'dorian.thivolle@uha.fr', '$2y$10$.2e4/qJjfDRsxeKZ5Tc18uqzpHuV.crNf4MzAkaiFgAsZ6MBGJmjO'), -- password : test
-	(1, 'arthur.gros@uha.fr', '$2y$10$.2e4/qJjfDRsxeKZ5Tc18uqzpHuV.crNf4MzAkaiFgAsZ6MBGJmjO'), -- password : test
-	(1, 'jean-charles.armbruster@uha.fr', '$2y$10$.2e4/qJjfDRsxeKZ5Tc18uqzpHuV.crNf4MzAkaiFgAsZ6MBGJmjO'), -- password : test
-	(1, 'red.oublant@uha.fr', '$2y$10$.2e4/qJjfDRsxeKZ5Tc18uqzpHuV.crNf4MzAkaiFgAsZ6MBGJmjO'), -- password : test
-	(1, 'some.one@uha.fr', '$2y$10$.2e4/qJjfDRsxeKZ5Tc18uqzpHuV.crNf4MzAkaiFgAsZ6MBGJmjO'), -- password : test
-	(1, 'joel.heinis@uha.fr', '$2y$10$.2e4/qJjfDRsxeKZ5Tc18uqzpHuV.crNf4MzAkaiFgAsZ6MBGJmjO'), -- password : test
-	(1, 'laurent.moalic@uha.fr', '$2y$10$.2e4/qJjfDRsxeKZ5Tc18uqzpHuV.crNf4MzAkaiFgAsZ6MBGJmjO'); -- password : test
-
-INSERT INTO user (id_account, firstname, lastname, uuid) VALUES
-	(2, 'Dorian', 'Thivolle', 'e2200381'),
-	(3, 'Arthur', 'Gros', 'e1800704'),
-	(4, 'Jean-Charles', 'Armbruster', 'e1801864'),
-	(5, 'Red', 'Houx blanc', 'e0000001'),
-	(6, 'Some', 'One', 'e0000002'),
-	(7, 'Joel', 'Heinis', 'p1000000'),
-	(8, 'Laurent', 'Moalic', 'p1000001');
+INSERT INTO user (id_account, firstname, lastname) VALUES
+	(2, 'Nox', 'Fly');
 
 INSERT INTO universitycourse (id_univ, name) VALUES
 	(1, 'Informatique et Mobilité'),
